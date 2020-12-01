@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_daily"
+    app:startDestination="@id/daily">
+
+    <fragment
+        android:id="@+id/daily"
+        android:name="com.percivalruiz.budget.ui.DailyFragment"
+        android:label="Daily"
+        tools:layout="@layout/fragment_daily">
+    </fragment>
+
+</navigation>
