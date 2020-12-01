@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/budget"
-        android:name="com.percivalruiz.budget.ui.BudgetFragment"
+        android:name="com.percivalruiz.budget.ui.budget.BudgetFragment"
         android:label="Budget"
         tools:layout="@layout/fragment_budget">
     </fragment>

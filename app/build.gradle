@@ -53,4 +53,13 @@ dependencies {
 
   // Fragment
   implementation "androidx.fragment:fragment-ktx:1.2.5"
+
+// Koin AndroidX Scope features
+  implementation "org.koin:koin-androidx-scope:2.2.1"
+// Koin AndroidX ViewModel features
+  implementation "org.koin:koin-androidx-viewmodel:2.2.1"
+// Koin AndroidX Fragment features
+  implementation "org.koin:koin-androidx-fragment:2.2.1"
+// Koin AndroidX WorkManager
+  implementation "org.koin:koin-androidx-workmanager:2.2.1"
 }
