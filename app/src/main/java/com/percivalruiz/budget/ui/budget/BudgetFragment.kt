@@ -1,4 +1,4 @@
-package com.percivalruiz.budget.ui
+package com.percivalruiz.budget.ui.budget
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -1,4 +1,4 @@
-package com.percivalruiz.budget.ui
+package com.percivalruiz.budget.ui.daily
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.percivalruiz.budget.R
-import com.percivalruiz.budget.dummy.DummyContent
+import com.percivalruiz.budget.data.DummyContent
 
 /**
  * A fragment representing a list of Items.
@@ -30,7 +30,7 @@ class DailyFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_daily_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_daily, container, false)
 
         // Set the adapter
         if (view is RecyclerView) {

@@ -1,4 +1,4 @@
-package com.percivalruiz.budget.dummy
+package com.percivalruiz.budget.data
 
 import java.util.ArrayList
 import java.util.HashMap

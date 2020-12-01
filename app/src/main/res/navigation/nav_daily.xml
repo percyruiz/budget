@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/daily"
-        android:name="com.percivalruiz.budget.ui.DailyFragment"
+        android:name="com.percivalruiz.budget.ui.daily.DailyFragment"
         android:label="Daily"
-        tools:layout="@layout/fragment_daily">
+        tools:layout="@layout/fragment_daily_item">
     </fragment>
 
 </navigation>

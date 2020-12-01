@@ -1,4 +1,4 @@
-package com.percivalruiz.budget.ui
+package com.percivalruiz.budget.ui.daily
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.percivalruiz.budget.R
 
-import com.percivalruiz.budget.dummy.DummyContent.DummyItem
+import com.percivalruiz.budget.data.DummyContent.DummyItem
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem].
@@ -19,7 +19,7 @@ class DailyRecyclerViewAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragment_daily, parent, false)
+            .inflate(R.layout.fragment_daily_item, parent, false)
         return ViewHolder(view)
     }
 
