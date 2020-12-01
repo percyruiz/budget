@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_budget"
+    app:startDestination="@id/budget">
+
+    <fragment
+        android:id="@+id/budget"
+        android:name="com.percivalruiz.budget.ui.BudgetFragment"
+        android:label="Budget"
+        tools:layout="@layout/fragment_budget">
+    </fragment>
+
+</navigation>
