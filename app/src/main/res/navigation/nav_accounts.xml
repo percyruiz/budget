@@ -10,6 +10,30 @@
         android:name="com.percivalruiz.budget.ui.accounts.AccountsFragment"
         android:label="Accounts"
         tools:layout="@layout/fragment_accounts">
+        <action
+            android:id="@+id/action_accounts_to_update_account"
+            app:destination="@id/update_account" />
+        <action
+            android:id="@+id/action_accounts_to_add_account"
+            app:destination="@id/add_account" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/update_account"
+        android:name="com.percivalruiz.budget.ui.accounts.UpdateAccountFragment"
+        android:label="Accounts"
+        tools:layout="@layout/fragment_accounts">
+
+        <argument
+            android:name="uid"
+            app:argType="integer"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/add_account"
+        android:name="com.percivalruiz.budget.ui.accounts.AddAccountFragment"
+        android:label="Accounts"
+        tools:layout="@layout/fragment_accounts">
     </fragment>
 
 </navigation>
