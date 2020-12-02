@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.percivalruiz.budget.R
 import com.percivalruiz.budget.data.Account
+import com.percivalruiz.budget.utils.formatMoney
 import java.text.NumberFormat
 import java.util.*
 
 class AccountsAdapter(
-    private val values: List<Account>
+    private val values: List<Account>,
+    private val click: (id: Int) -> Unit
 ) : RecyclerView.Adapter<AccountsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,14 +24,13 @@ class AccountsAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.id.text = (position+1).toString()
+        holder.id.text = item.uid.toString()
         holder.name.text = item.name
 
-        val format = NumberFormat.getCurrencyInstance()
-        format.maximumFractionDigits = 2
-        format.currency = Currency.getInstance("PHP")
-
-        holder.balance.text = format.format(item.balance)
+        holder.balance.text = item.balance.formatMoney()
+        holder.itemView.setOnClickListener {
+            click(item.uid)
+        }
     }
 
     override fun getItemCount(): Int = values.size

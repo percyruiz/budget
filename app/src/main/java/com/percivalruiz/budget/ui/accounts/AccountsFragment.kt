@@ -5,22 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.lifecycle.observe
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.percivalruiz.budget.R
 import com.percivalruiz.budget.data.Account
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AccountsFragment : Fragment() {
 
     private var columnCount = 1
-    private var accounts =
-        mutableListOf(
-            Account("Savings", 123213.00),
-            Account("Payroll", 12331.00),
-            Account("Checking", 12414.00)
-        )
+    private val viewModel by viewModel<AccountsViewModel>()
+    private val accounts = mutableListOf<Account>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +36,21 @@ class AccountsFragment : Fragment() {
         val accountsRecyclerView = view.findViewById<RecyclerView>(R.id.accounts_list)
         val fab = view.findViewById<FloatingActionButton>(R.id.fab)
 
-        val accountsAdapter = AccountsAdapter(accounts)
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Boolean>("IS_UPDATED")
+            ?.observe(
+                viewLifecycleOwner
+            ) { reload ->
+                if(reload) {
+                    viewModel.getAccounts()
+                }
+            }
+
+        val accountsAdapter = AccountsAdapter(accounts) { uid ->
+            findNavController().navigate(
+                AccountsFragmentDirections.actionAccountsToUpdateAccount(uid)
+            )
+        }
+
         with(accountsRecyclerView) {
             layoutManager = when {
                 columnCount <= 1 -> LinearLayoutManager(context)
@@ -44,12 +59,16 @@ class AccountsFragment : Fragment() {
             adapter = accountsAdapter
         }
 
-        fab.setOnClickListener {
-            accounts.add(
-                Account("Spending", 123213.00)
-            )
+        viewModel.accounts.observe(viewLifecycleOwner) {
+            accounts.clear()
+            accounts.addAll(it)
             accountsRecyclerView.smoothScrollToPosition(accounts.size)
             accountsAdapter.notifyDataSetChanged()
+        }
+
+        fab.setOnClickListener {
+            findNavController().navigate(AccountsFragmentDirections.actionAccountsToAddAccount())
+            viewModel.getAccounts()
         }
     }
 }
